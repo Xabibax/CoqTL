@@ -27,11 +27,24 @@ class EcoreGeneratorDriver {
 		URIUtil.write(output_uri, content)
 	}
 	
-	def static void main(String[] args) {
-		val mm_path = "./resources/C2RMV/Class.ecore"
-		//val mm_path = "./resources/Relational.ecore"
+	/**
+	 * Will tansform an ecore file into a coq file (*.ecore -> *.v)
+	 * If no parameters are passed on execution 
+	 * @param args Pass first the path to ecore to transform and then the output file path
+	 */
+	def static void main(String[] args ) {
+		var mm_path = '';
+		var output_path = '';
+		if (args.length > 0) {
+			mm_path = args.get(0);
+			output_path = args.get(1);
+		} else {
+			mm_path = "./resources/C2RMV/Class.ecore";
+//			mm_path = "./resources/Relational.ecore"
+			output_path = "./resources/ClassMetamodel.v";
+		}
+		
 		val mm_uri = URI.createFileURI(mm_path);
-		val output_path = "./resources/ClassMetamodel.v"
 		val output_uri = URI.createFileURI(output_path);
 		
 		doEMFSetup
