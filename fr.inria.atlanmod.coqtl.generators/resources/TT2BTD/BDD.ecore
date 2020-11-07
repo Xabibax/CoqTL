@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="BinaryDecissionTreeModel" nsURI="http://BinaryDecissionTreeModel/1.0"
+    nsPrefix="BinaryDecissionTreeModel">
+  <eClassifiers xsi:type="ecore:EClass" name="BinaryDecisionDiagram">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tree" lowerBound="1" eType="#//Tree"
+        containment="true" eOpposite="#//Tree/owner"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" lowerBound="1" upperBound="-1"
+        eType="#//Port" containment="true" eOpposite="#//Port/owner"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Tree" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owner" eType="#//BinaryDecisionDiagram"
+        eOpposite="#//BinaryDecisionDiagram/tree"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownerSubtreeForOne" eType="#//Subtree"
+        eOpposite="#//Subtree/treeForOne"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownerSubtreeForZero" eType="#//Subtree"
+        eOpposite="#//Subtree/treeForZero"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Subtree" eSuperTypes="#//Tree">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="treeForOne" lowerBound="1"
+        eType="#//Tree" eOpposite="#//Tree/ownerSubtreeForOne"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="treeForZero" lowerBound="1"
+        eType="#//Tree" eOpposite="#//Tree/ownerSubtreeForZero"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="port" lowerBound="1" eType="#//InputPort"
+        eOpposite="#//InputPort/subtrees"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Leaf" eSuperTypes="#//Tree">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="assignments" lowerBound="1"
+        upperBound="-1" eType="#//Assignement" containment="true" eOpposite="#//Assignement/owner"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Assignement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owner" lowerBound="1" eType="#//Leaf"
+        eOpposite="#//Leaf/assignments"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="port" lowerBound="1" eType="#//OutputPort"
+        eOpposite="#//OutputPort/assignments"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OutputPort" eSuperTypes="#//Port">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="assignments" upperBound="-1"
+        eType="#//Assignement" eOpposite="#//Assignement/port"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Port" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owner" lowerBound="1" eType="#//BinaryDecisionDiagram"
+        eOpposite="#//BinaryDecisionDiagram/ports"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InputPort" eSuperTypes="#//Port">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subtrees" upperBound="-1"
+        eType="#//Subtree" eOpposite="#//Subtree/port"/>
+  </eClassifiers>
+</ecore:EPackage>
