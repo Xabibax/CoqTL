@@ -3,13 +3,14 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="BinaryDecissionTreeModel" nsURI="http://BinaryDecissionTreeModel/1.0"
     nsPrefix="BinaryDecissionTreeModel">
   <eClassifiers xsi:type="ecore:EClass" name="BinaryDecisionDiagram">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="tree" lowerBound="1" eType="#//Tree"
         containment="true" eOpposite="#//Tree/owner"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ports" lowerBound="1" upperBound="-1"
         eType="#//Port" containment="true" eOpposite="#//Port/owner"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Tree" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="owner" eType="#//BinaryDecisionDiagram"
         eOpposite="#//BinaryDecisionDiagram/tree"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownerSubtreeForOne" eType="#//Subtree"
@@ -30,6 +31,7 @@
         upperBound="-1" eType="#//Assignement" containment="true" eOpposite="#//Assignement/owner"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Assignement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="false"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="owner" lowerBound="1" eType="#//Leaf"
