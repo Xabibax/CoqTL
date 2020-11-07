@@ -11,6 +11,6 @@
     <booleanAttribute key="org.eclipse.jdt.launching.ATTR_USE_CLASSPATH_ONLY_JAR" value="false"/>
     <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="fr.inria.atlanmod.coqtl.ecore.core.EcoreGeneratorDriver"/>
     <stringAttribute key="org.eclipse.jdt.launching.MODULE_NAME" value="fr.inria.atlanmod.coqtl.generators"/>
-    <stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="${project_loc}/resources/TT2BTD/BDD.ecore &#10;${project_loc}/resources/BDDMetamodel.v"/>
+    <stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="${project_loc}/resources/HSM2FSM/HSM.ecore &#10;${project_loc}/resources/HSMModel.v"/>
     <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="fr.inria.atlanmod.coqtl.generators"/>
 </launchConfiguration>
