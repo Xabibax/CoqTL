@@ -34,3 +34,18 @@ nra.cache
 *.vok
 
 fr.inria.atlanmod.coqtl.generators/.classpath
+
+fr.inria.atlanmod.coqtl.coq/.*
+fr.inria.atlanmod.coqtl.coq/**/.*
+
+fr.inria.atlanmod.coqtl.coq/Makefile.conf
+
+fr.inria.atlanmod.coqtl.coq/Makefile
+
+fr.inria.atlanmod.coqtl.coq/make.log
+
+fr.inria.atlanmod.coqtl.coq/_CoqProject
+
+*.v#
+
+*.crashcoqide
