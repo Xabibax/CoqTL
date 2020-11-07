@@ -5,6 +5,7 @@ Require Export core.utils.tTuple.
 Require Export core.utils.tConcat.
 Require Export core.utils.tNotation.
 Require Export core.utils.tString.
+Require Export core.utils.tBool.
 Require Export core.utils.tPrint.
 
 
