@@ -44,8 +44,6 @@ fr.inria.atlanmod.coqtl.coq/Makefile
 
 fr.inria.atlanmod.coqtl.coq/make.log
 
-fr.inria.atlanmod.coqtl.coq/_CoqProject
-
 *.v#
 
 *.crashcoqide
