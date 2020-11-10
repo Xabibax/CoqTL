@@ -37,3 +37,5 @@ examples/Class2RelationalMV/PersonModel.v
 examples/HSM2FSM/HSM.v
 examples/HSM2FSM/HSM2FSM.v
 examples/HSM2FSM/HSMModel.v
+
+-R "examples/TT2BDT" examples.TT2BDT
