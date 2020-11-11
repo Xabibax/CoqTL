@@ -33,8 +33,6 @@ nra.cache
 *.vos
 *.vok
 
-fr.inria.atlanmod.coqtl.generators/.classpath
-
 fr.inria.atlanmod.coqtl.coq/.*
 fr.inria.atlanmod.coqtl.coq/**/.*
 
