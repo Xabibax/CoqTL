@@ -39,8 +39,8 @@ examples/HSM2FSM/HSM2FSM.v
 examples/HSM2FSM/HSMModel.v
 
 -R "examples/TT2BDT" examples.TT2BDT
-examples/TT2BDT/TTMetamodel.v
-examples/TT2BDT/BDDMetamodel.v
-examples/TT2BDT/TT2BDT.v
-examples/TT2BDT/TransformationTest.v
-examples/TT2BDT/TTModel_1.v
+#examples/TT2BDT/TTMetamodel.v
+#examples/TT2BDT/BDDMetamodel.v
+#examples/TT2BDT/TT2BDT.v
+#examples/TT2BDT/TransformationTest.v
+#examples/TT2BDT/TTModel_1.v

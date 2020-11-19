@@ -1,23 +1,80 @@
-CoqTL: an Internal DSL for Model Transformation in Coq
-=======
-In model-driven engineering, model transformation (MT) verification is essential for reliably producing software artifacts. While recent advancements have enabled automatic Hoare-style verification for non-trivial MTs, there are certain verification tasks (e.g. induction) that are intrinsically difficult to automate. Existing tools that aim at simplifying the interactive verification of MTs typically translate the MT specification (e.g. in ATL) and properties to prove (e.g. in OCL) into an interactive theorem prover. However, since the MT specification and proof phases happen in separate languages, the proof developer needs a deep knowledge of the translation logic. Naturally any error in the MT translation could cause unsound verification, i.e. the MT executed in the original environment may have different semantics from the verified MT.
+# Sensibilisation à la recherche
 
-We propose an alternative solution by designing and implementing an internal domain specific language, namely CoqTL, for the specification of declarative MTs directly in the Coq interactive theorem prover.  Expressions in CoqTL are written in Gallina (the specification language of Coq), increasing the possibilities of reuse of native Coq libraries in the transformation definition and proof. In this repository, it contains the example and proofs of CoqTL.
+## Introduction
 
-Usage
-------
-* To compile CoqTL libraries and sample transformations:
-> coq_makefile -f _CoqProject -o Makefile
+This project is a fork from [CoqTL Library](https://github.com/atlanmod/CoqTL).  
+The latest version of this project can be found [here](https://github.com/Xabibax/CoqTL/tree/xabi_branch/fr.inria.atlanmod.coqtl.coq).  
+This project goal is to produce a Binary Decision Tree from a Truth Table with the CoqTL.
 
-> make
+In this project we tried to use the CoqTL Library to transform Ecore models and ATL Transformation into Coq valid operations.
 
-* Sample usage e.g.:
-> Run model transformation: examples/Class2Relational/PersonTest.v
+## Requirement
 
-> Proofs: examples/Class2Relational/theorems/thm_c2r_complete.v
+* [Coq 8.12](https://coq.inria.fr/opam-using.html)  
+* [MathComp](https://github.com/math-comp/math-comp/tree/mathcomp-1.6.4)  
 
-Contacts
-------
-> Massimo Tisi: massimo.tisi@imt-atlantique.fr
+### Quick install (ubuntu)
 
-> Zheng Cheng: zheng.cheng@imt-atlantique.fr
+```bash
+### Install OPAM 2.X
+sudo apt-get install opam
+opam --version # should print 2.x.y
+
+### Initialize OPAM
+opam init -n --comp=ocaml-base-compiler.4.05.0
+eval $(opam config env)
+
+### Install Coq and MatComp
+opam repo add coq-released https://coq.inria.fr/opam/released
+opam pin add -n coq -k version 8.12.0
+opam install coq -j3
+opam install coq-mathcomp-ssreflect -j3
+```
+
+## Prepare the working environment
+
+Go to the root of the project  
+
+```bash
+$ pwd
+/home/xabi/fr.inria.atlanmod.coqtl.coq
+```
+
+Then generate coq files ($ ./clean.sh && ./compile.sh):
+
+```bash
+make clean && \
+coq_makefile -f _CoqProject -o Makefile && \
+make
+```
+
+Then you can edit the *.v files and use the proof mode.
+
+## Execution
+
+The TruthTable to BinaryDecisionDiagram solution can be found n : fr.inria.atlanmod.coqtl.coq/coq/examples/TT2BDT
+
+Open the TransformationTest.v and start the proof mode
+
+You can change the model to test by replacing the input model
+
+```coq
+Require Import String.
+Require Import List.
+
+Require Import core.CoqTL.
+Require Import core.utils.tPrint.
+
+Require Import examples.TT2BDT.TTMetamodel.
+Require Import examples.TT2BDT.BDDMetamodel.
+Require Import examples.TT2BDT.TT2BDD.
+Require Import examples.TT2BDT.<InputModel>.
+
+Time Compute (execute TT2BDD <InputModel>).
+```
+
+## Algorithm
+
+The solution is based on the The TTC 2019 TT2BDD Case contest solution presented by Antonio [García-Domínguez](https://www.cs.aston.ac.uk/~garcia-a/)
+
+A visualization of the algorithm can be found [here](https://docs.google.com/presentation/d/1rq_Q0wgN0IKiFUgEF11RKP6j1lDEobrQiKc8ky9uXt0/edit?usp=sharing)
