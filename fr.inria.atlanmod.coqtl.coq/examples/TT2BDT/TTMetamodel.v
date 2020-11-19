@@ -19,6 +19,7 @@ Require Import core.utils.tTop.
 Require Import core.Metamodel.
 Require Import core.Model.
 
+
 (* Base types *)
 Inductive TruthTable : Set :=
   BuildTruthTable :
@@ -316,7 +317,9 @@ Definition TruthTableModelMetamodel_instanceOfEReference (trer_arg: TruthTableMo
 (** Helper of building EObject for model **)
 Definition TruthTableModelMetamodel_getEObjectFromEAttributeValues (trec_arg : TruthTableModelMetamodel_EClass) : (TruthTableModelMetamodel_getEAttributeTypesByEClass trec_arg) -> TruthTableModelMetamodel_EObject :=
   match trec_arg with
-    | TruthTableEClass => (fun (p: (string * string)) => (Build_TruthTableModelMetamodel_EObject TruthTableEClass (BuildTruthTable (fst p) (snd p))))
+    | TruthTableEClass => 
+      (fun (p: (string * string)) => 
+        (Build_TruthTableModelMetamodel_EObject TruthTableEClass (BuildTruthTable (fst p) (snd p))))
     | RowEClass => (fun (p: (string)) => (Build_TruthTableModelMetamodel_EObject RowEClass (BuildRow p)))
     | CellEClass => (fun (p: (string * bool)) => (Build_TruthTableModelMetamodel_EObject CellEClass (BuildCell (fst p) (snd p))))
     | PortEClass => (fun (p: (string * string)) => (Build_TruthTableModelMetamodel_EObject PortEClass (BuildPort (fst p) (snd p))))

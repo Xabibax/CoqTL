@@ -612,6 +612,10 @@ Instance BinaryDecissionTreeModelMetamodel : Metamodel BinaryDecissionTreeModelM
     (* Constructors *)
     BuildModelElement := Build_BinaryDecissionTreeModelMetamodel_EObject;
     BuildModelLink := Build_BinaryDecissionTreeModelMetamodel_ELink;
+
+    (* Done manually *)
+    getId := TruthTableModelMetamodel_getId;
+    setId := TruthTableModelMetamodel_setId;
   }.
   
 (* Useful lemmas *)
